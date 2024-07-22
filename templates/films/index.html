@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Cover section with slideshow -->
+    <!-- Cover section -->
+    <div class="cover-slideshow">
+        {% for film in random_films %}
+            <div class="cover-slide">
+                <div class="cover-left">
+                    <h1>{{ film.name }}</h1>
+                    <p>Режиссер: {{ film.director }}</p>
+                    <p>{{ film.synopsis }}</p>
+                    <div class="watch-container">
+                        <a href="{% url 'film_detail' film.id %}"><button id="watch">Смотреть</button></a>
+                    </div>
+                </div>
+                <div class="cover-right">
+                    <img src="{{ film.poster.url }}" alt="{{ film.name }} poster">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Filter section -->
+    <div class="filter">
+        <input type="text" id="search" placeholder="Искать фильм...">
+        <select id="year-filter">
+            <option value="">Год</option>
+            {% for year in years %}
+                <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select>
+        <select id="genre-filter">
+            <option value="">Жанр</option>
+            {% for genre in genres %}
+                <option value="{{ genre }}">{{ genre }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+
+    <!-- Gallery section -->
+    <div class="gallery" id="gallery">
+        {% for film in films %}
+        <div class="gallery-item">
+            <a href="{% url 'film_detail' film.id %}">
+                <img src="{{ film.poster.url }}" alt="{{ film.name }}">
+                <div class="gallery-item-info">
+                    <h3>{{ film.name }}</h3>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="load-more-container">
+        <button id="load-more">Еще...</button>
+    </div>
+
+    <div class="about_box">
+        <div class="info">
+            <h1>О нас</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lacinia odio vitae vestibulum vestibulum.</p>
+        </div>
+    </div>
+
+{% endblock %}

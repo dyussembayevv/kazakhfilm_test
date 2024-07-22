@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Kazakhfilm archive{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/Aaargh Regular.ttf' %}">
+    <script src="{% static 'js/loadmore.js' %}" defer></script>
+    <style>
+        @font-face {
+            font-family: 'Aaargh Regular';
+            src: url('{% static 'fonts/Aaargh Regular.ttf' %}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Hero';
+            src: url('{% static 'fonts/Hero.ttf' %}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Nunito';
+            src: url('{% static 'fonts/Nunito.ttf' %}') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="{% static 'img/Kazakhfilm_logo.png' %}" alt="Logo" class="logo">
+    </header>
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        <p>&copy; 2024 Kazakhfilm archive</p>
+    </footer>
+    <script src="{% static 'js/loadmore.js' %}"></script>
+    <script src="{% static 'js/filter.js' %}"></script>
+    <script src="{% static 'js/slideshow.js' %}"></script>
+</body>
+</html>
